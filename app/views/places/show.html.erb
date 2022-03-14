@@ -2,18 +2,20 @@
 
 <% if @current_user %>
 
-<h2>My Posts</h2>
-  <% for post in @place.posts.where({ user_id: @current_user.id}) %>
-    <h3><%= post.title %></h3>
-    <h4><%= post.posted_on %></h4>
-    <p><%= post.description %></p>
-  <% end %>
-
-  <p>
-    <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
-  </p>
-
-<% end %>
+<div class="row">
+    <h2>My Posts</h2>
+        <% for post in @place.posts.where({ user_id: @current_user.id}) %>
+          <div class="col-3">
+            <h3><%= post.title %></h3>
+            <h4><%= post.posted_on %></h4>
+            <p><%= post.description %></p>
+          </div>
+        <% end %>
+        <p>
+          <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
+        </p>
+    <% end %>
+</div>
 
 <p>
   <a href="/places">Back to All Places</a>
